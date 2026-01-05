@@ -105,17 +105,42 @@ if (navbarEl) {
 // Individual per-link listeners were removed to avoid duplicated handlers
 // and pointer-event conflicts when overlays are present.
 
+// Map navbar link text to page names
+const pageMap = {
+  'home': 'about',      // Home shows the about page (which has hero section)
+  'about': 'about',
+  'projects': 'portfolio',
+  'contact': 'contact'
+};
+
 // Delegated handler: also listen on document to catch clicks if individual listeners fail
 document.addEventListener('click', function (e) {
   const btn = e.target.closest && e.target.closest('[data-nav-link]');
   if (!btn) return;
-  // normalize target text
-  const target = btn.textContent.trim().toLowerCase();
+  
+  // Prevent default link behavior
+  e.preventDefault();
+  
+  // Get target from href hash or text content
+  let target = '';
+  const href = btn.getAttribute('href');
+  if (href && href.startsWith('#')) {
+    target = href.substring(1).toLowerCase();
+  } else {
+    target = btn.textContent.trim().toLowerCase();
+  }
+  
+  // Map the target to the correct page name
+  const pageName = pageMap[target] || target;
 
+  // Find the target article/section
+  const targetArticle = document.querySelector(`[data-page="${pageName}"]`);
+  const targetSection = document.querySelector(`#${target}`);
+  
   // Show the matching page
   if (pages && pages.length) {
     for (let j = 0; j < pages.length; j++) {
-      if ((pages[j].dataset.page || '').toLowerCase() === target) {
+      if ((pages[j].dataset.page || '').toLowerCase() === pageName) {
         pages[j].classList.add('active');
       } else {
         pages[j].classList.remove('active');
@@ -134,9 +159,73 @@ document.addEventListener('click', function (e) {
     }
   }
 
-  // ensure the clicked link is interactive
-  btn.style.pointerEvents = 'auto';
-  window.scrollTo(0, 0);
+  // Scroll to the target section smoothly
+  setTimeout(() => {
+    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 64;
+    let scrollTarget = null;
+    
+    if (targetSection) {
+      scrollTarget = targetSection;
+    } else if (targetArticle) {
+      scrollTarget = targetArticle;
+    }
+    
+    if (scrollTarget) {
+      const targetPosition = scrollTarget.offsetTop - navbarHeight;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, 100);
+
+  // Update URL hash
+  if (history.pushState) {
+    history.pushState(null, null, '#' + target);
+  }
+});
+
+// Handle initial page load with hash
+function handleInitialPageLoad() {
+  const hash = window.location.hash.substring(1).toLowerCase();
+  if (hash) {
+    const pageName = pageMap[hash] || hash;
+    const targetPage = document.querySelector(`[data-page="${pageName}"]`);
+    if (targetPage) {
+      // Show the matching page
+      if (pages && pages.length) {
+        for (let j = 0; j < pages.length; j++) {
+          if ((pages[j].dataset.page || '').toLowerCase() === pageName) {
+            pages[j].classList.add('active');
+          } else {
+            pages[j].classList.remove('active');
+          }
+        }
+      }
+
+      // Update nav active state
+      const targetLink = document.querySelector(`[data-nav-link][href="#${hash}"]`);
+      if (targetLink && navigationLinks && navigationLinks.length) {
+        for (let k = 0; k < navigationLinks.length; k++) {
+          if (navigationLinks[k] === targetLink) {
+            navigationLinks[k].classList.add('active');
+          } else {
+            navigationLinks[k].classList.remove('active');
+          }
+        }
+      }
+    }
+  }
+}
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function() {
+  handleInitialPageLoad();
+});
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  handleInitialPageLoad();
 });
 
   // Make the hero "GitHub Profile" button open the user's GitHub profile.

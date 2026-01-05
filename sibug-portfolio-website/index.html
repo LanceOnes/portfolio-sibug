@@ -29,41 +29,32 @@
 </head>
 <body>
 
-
-
   
+
 <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
               <img src="./assets/ele/letter_logo_gl.png" alt="Logo" class="logo-img">
             </div>
             <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link" data-nav-link>Home</a></li>
+                <li><a href="#about" class="nav-link" data-nav-link>About</a></li>
+                <li><a href="#projects" class="nav-link" data-nav-link>Projects</a></li>
+                <li><a href="#contact" class="nav-link" data-nav-link>Contact</a></li>
             </ul>
-            <div class="nav-actions">
-              <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
-              <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-              </button>
-            </div>
         </div>
     </nav>
 
-  <main class="mx-auto p-10 md:flex md:items-start md:gap-10">
+  <main class="main-content-wrapper">
 
     <aside class="sidebar md:w-72 w-full" data-sidebar>
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
+          <img src="./assets/images/my-avatar.png" alt="Lance Sibug" width="80">
         </figure>
 
         <div class="info-content">
-          <h1 class="name" title="Richard hanrick">Lance Sibug</h1>
+          <h1 class="name" title="Lance Sibug">Lance Sibug</h1>
 
           <p class="title">Student</p>
         </div>
@@ -145,14 +136,14 @@
       </div>
     </aside>
 
-
-      <article class="about  active" data-page="about">
+    <div class="main-content">
+      <article class="about  active" data-page="about" id="about">
 
         <header class="sr-only">
           <h2 class="h2 article-title">About me</h2>
         </header>
 
-        <section class="home-hero md:flex md:items-center md:gap-2">
+        <section class="home-hero md:flex md:items-center md:gap-2" id="home">
           <div class="hero-left md:w-1/2">
             <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight">Hi, I'm <span class="text-primary">Lance Sibug</span></h1>
             <p class="mt-4 text-xl text-slate-300">Student</p>
@@ -175,45 +166,68 @@
           </div>
         </section>
 
-        <section class="service">
-          <h3 class="h3 service-title">What i'm doing</h3>
-          <ul class="service-list">
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
+        <section class="experiences-section" id="experiences">
+          <h2 class="h2 article-title" style="margin-bottom: 30px;">Experiences</h2>
+          <div class="experiences-grid">
+            <div class="experience-card">
+              <h3 class="h3 experience-card-title">My Journey</h3>
+              <p class="experience-card-text">Started coding in Grade 11 with curiosity, now pursuing Information Technology at Filamer Christian University. What began as simple console apps has evolved into a passion for creating meaningful digital experiences.</p>
+              <div class="experience-stats">
+                <div class="stat-item">
+                  <span class="stat-number">2+</span>
+                  <span class="stat-label">Years Coding</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">15+</span>
+                  <span class="stat-label">Projects Built</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-number">FCU</span>
+                  <span class="stat-label">University</span>
+                </div>
               </div>
+            </div>
 
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web design</h4>
-                <p class="service-item-text">Design responsive, user-friendly interfaces that prioritize accessibility.</p>
+            <div class="experience-card">
+              <div class="experience-icon">
+                <ion-icon name="school-outline"></ion-icon>
               </div>
+              <h3 class="h3 experience-card-title">Education</h3>
+              <p class="experience-card-text">Information Technology</p>
+              <p class="experience-card-text">Filamer Christian University</p>
+              <p class="experience-timeline">2023 - Present</p>
+            </div>
 
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+            <div class="experience-card">
+              <div class="experience-icon">
+                <ion-icon name="code-slash-outline"></ion-icon>
               </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile apps</h4>
-                <p class="service-item-text">Develop cross-platform mobile apps with polished UX and smooth performance.</p>
+              <h3 class="h3 experience-card-title">Passion</h3>
+              <div class="passion-tags">
+                <span class="passion-tag active">Full-Stack Development</span>
+                <span class="passion-tag">Automation</span>
+                <span class="passion-tag">AI & ML</span>
               </div>
+            </div>
 
-            </li>
-
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="90">
+            <div class="experience-card">
+              <h3 class="h3 experience-card-title">Tech Stack</h3>
+              <div class="tech-stack-grid">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">C/C++</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">GitHub</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Figma</span>
               </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">VolleyBall</h4>
-                <p class="service-item-text">Competitive volleyball player — team-focused and disciplined.</p>
-              </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </section>
 
       </article>
@@ -357,56 +371,13 @@
 
 
 
-      <article class="portfolio" data-page="portfolio">
+      <article class="portfolio" data-page="portfolio" id="projects">
         <header>
           <h2 class="h2 article-title">Projects</h2>
         </header>
 
         <section class="projects">
-          <ul class="filter-list">
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-          </ul>
-
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-              <div class="select-value" data-selecct-value>Select category</div>
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-            </button>
-
-            <ul class="select-list">
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-            </ul>
-          </div>
+          <h3 class="h3" style="margin-bottom: 30px;">All Projects</h3>
 
           <ul class="project-list">
 
@@ -720,24 +691,15 @@
 
 
 
-
       <!--
         - #CONTACT
       -->
 
-      <article class="contact" data-page="contact">
+      <article class="contact" data-page="contact" id="contact">
 
         <header>
           <h2 class="h2 article-title">Contact</h2>
         </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
 
         <section class="contact-form">
 
@@ -768,10 +730,11 @@
 
   </main>
 
-
-
-
-
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2026 Lance Sibug. All Rights Reserved.</p>
+    </div>
+  </footer>
 
   <!--
     - custom js link
