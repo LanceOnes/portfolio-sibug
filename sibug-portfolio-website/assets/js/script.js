@@ -3,6 +3,50 @@
 // Utility: toggle element active class
 const elementToggleFunc = function (elem) { if (elem) elem.classList.toggle('active'); };
 
+// ---------- Mobile Menu Toggle ----------
+const menuToggle = document.querySelector('[data-menu-toggle]');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', function () {
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Close menu when clicking on a nav link
+  navLinks.forEach(link => {
+    link.addEventListener('click', function () {
+      if (window.innerWidth <= 767) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth <= 767) {
+      if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+      }
+    }
+  });
+
+  // Close menu on window resize if it becomes desktop size
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 767) {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+  });
+}
+
 // ---------- Sidebar (mobile) ----------
 const sidebar = document.querySelector('[data-sidebar]');
 const sidebarBtn = document.querySelector('[data-sidebar-btn]');
