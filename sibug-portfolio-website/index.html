@@ -27,21 +27,25 @@
     }
   </script>
 </head>
-<body>
+<body class="preloading">
 
   
 
-<nav class="navbar">
+    <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-              <img src="./assets/ele/letter_logo_gl.png" alt="Logo" class="logo-img">
+              <img src="./assets/images/logo.ico" alt="Logo" class="logo-img">
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link" data-nav-link>Home</a></li>
                 <li><a href="#about" class="nav-link" data-nav-link>About</a></li>
                 <li><a href="#projects" class="nav-link" data-nav-link>Projects</a></li>
+                <li><a href="#certificates" class="nav-link" data-nav-link>Certificates</a></li>
                 <li><a href="#contact" class="nav-link" data-nav-link>Contact</a></li>
             </ul>
+            <div class="menu-bar">
+
+            </div>
         </div>
     </nav>
 
@@ -88,11 +92,11 @@
 
           <li class="contact-item">
             <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
+              <ion-icon name="school-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-              <time datetime="2004-11-02">November 02, 2004</time>
+              <p class="contact-title">School</p>
+              <address>Filamer Christian University</address>
             </div>
           </li>
 
@@ -137,13 +141,10 @@
     </aside>
 
     <div class="main-content">
-      <article class="about  active" data-page="about" id="about">
+      <!-- Home Section -->
+      <article class="home active" data-page="home" id="home">
 
-        <header class="sr-only">
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="home-hero md:flex md:items-center md:gap-2" id="home">
+        <section class="home-hero md:flex md:items-center md:gap-2" id="home-hero">
           <div class="hero-left md:w-1/2">
             <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight">Hi, I'm <span class="text-primary">Lance Sibug</span></h1>
             <p class="mt-4 text-xl text-slate-300">Student</p>
@@ -151,7 +152,7 @@
 
             <div class="hero-cta mt-8 flex items-center gap-4">
               <a href="#" class="btn-primary">GitHub Profile&nbsp;<ion-icon name="logo-github"></ion-icon></a>
-              <a href="#" class="btn-ghost">Resume&nbsp;<ion-icon name="document-outline"></ion-icon></a>
+              <a href="https://drive.google.com/drive/u/0/folders/13Sk8Dl_O0H4rD14YFge8M8lDe0lAqiKR" class="btn-ghost" target="_blank" rel="noopener">Resume&nbsp;<ion-icon name="document-outline"></ion-icon></a>
               <a href="#contact" class="btn-ghost">Contact&nbsp;<ion-icon name="chatbubbles-outline"></ion-icon></a>
             </div>
           </div>
@@ -166,24 +167,32 @@
           </div>
         </section>
 
+      </article>
+
+      <!-- About Section -->
+      <article class="about" data-page="about" id="about">
+      
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+
         <section class="experiences-section" id="experiences">
-          <h2 class="h2 article-title" style="margin-bottom: 30px;">Experiences</h2>
           <div class="experiences-grid">
             <div class="experience-card">
               <h3 class="h3 experience-card-title">My Journey</h3>
-              <p class="experience-card-text">Started coding in Grade 11 with curiosity, now pursuing Information Technology at Filamer Christian University. What began as simple console apps has evolved into a passion for creating meaningful digital experiences.</p>
+              <p class="experience-card-text">Started coding in Grade 12 with curiosity, now pursuing Information Technology at Filamer Christian University. I enjoy turning ideas into real-world projects, learning new technologies, and continuously improving my skills in both frontend and backend development.</p>
               <div class="experience-stats">
                 <div class="stat-item">
-                  <span class="stat-number">2+</span>
+                  <span class="stat-number">2</span>
                   <span class="stat-label">Years Coding</span>
                 </div>
                 <div class="stat-item">
-                  <span class="stat-number">15+</span>
-                  <span class="stat-label">Projects Built</span>
+                  <span class="stat-number">2</span>
+                  <span class="stat-label">Projects</span>
                 </div>
                 <div class="stat-item">
-                  <span class="stat-number">FCU</span>
-                  <span class="stat-label">University</span>
+                  <span class="stat-number">Filamer Christian University</span>
                 </div>
               </div>
             </div>
@@ -199,14 +208,11 @@
             </div>
 
             <div class="experience-card">
-              <div class="experience-icon">
-                <ion-icon name="code-slash-outline"></ion-icon>
-              </div>
               <h3 class="h3 experience-card-title">Passion</h3>
               <div class="passion-tags">
                 <span class="passion-tag active">Full-Stack Development</span>
-                <span class="passion-tag">Automation</span>
-                <span class="passion-tag">AI & ML</span>
+                <span class="passion-tag">IT Student</span>
+                <span class="passion-tag">Volleyball</span>
               </div>
             </div>
 
@@ -218,155 +224,14 @@
                 <span class="tech-tag">JavaScript</span>
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Java</span>
-                <span class="tech-tag">C/C++</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">Bootstrap</span>
                 <span class="tech-tag">Git</span>
                 <span class="tech-tag">GitHub</span>
                 <span class="tech-tag">MySQL</span>
-                <span class="tech-tag">Figma</span>
               </div>
             </div>
           </div>
         </section>
 
-      </article>
-
-      <article class="resume" data-page="resume">
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">University school of the arts</h4>
-              <span>2007 — 2008</span>
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">New york academy of art</h4>
-              <span>2006 — 2007</span>
-              <p class="timeline-text">
-                Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est
-                omnis..
-              </p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">High school of art and design</h4>
-              <span>2002 — 2004</span>
-              <p class="timeline-text">
-                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
-                magni dolores
-                eos.
-              </p>
-            </li>
-          </ol>
-        </section>
-
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Creative director</h4>
-              <span>2015 — Present</span>
-              <p class="timeline-text">
-                Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas
-                molestias
-                exceptur.
-              </p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Art director</h4>
-              <span>2013 — 2015</span>
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Web designer</h4>
-              <span>2010 — 2013</span>
-              <p class="timeline-text">
-                Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                quas molestias
-                exceptur.
-              </p>
-            </li>
-          </ol>
-        </section>
-
-        <section class="skill">
-          <h3 class="h3 skills-title">My skills</h3>
-          <ul class="skills-list content-card">
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Web design</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Graphic design</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Branding</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">WordPress</h5>
-                <data value="50">50%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 50%;"></div>
-              </div>
-            </li>
-          </ul>
-        </section>
       </article>
 
 
@@ -391,8 +256,8 @@
                   <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Finance</h3>
-                <p class="project-category">Web development</p>
+                <h3 class="project-title">Scholar Track</h3>
+                <p class="project-category">Management System</p>
               </a>
             </li>
 
@@ -403,120 +268,14 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                  <img src="./assets/images/project-2.jpg" alt="homestead" loading="lazy">
                 </figure>
-                <h3 class="project-title">Orizon</h3>
-                <p class="project-category">Web development</p>
+                <h3 class="project-title">HomeStead</h3>
+                <p class="project-category">Web Development</p>
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Fundo</h3>
-                <p class="project-category">Web design</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-                <p class="project-category">Applications</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-                <p class="project-category">Applications</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-                <p class="project-category">Web development</p>
-              </a>
-            </li>
+          
           </ul>
         </section>
       </article>
@@ -525,9 +284,9 @@
       <!--
         -BLOG
       -->
-      <article class="blog" data-page="blog">
+      <article class="blog" data-page="blog" id="certificates">
         <header>
-          <h2 class="h2 article-title">Blog</h2>
+          <h2 class="h2 article-title">Certificates</h2>
         </header>
 
         <section class="blog-posts">
@@ -535,20 +294,17 @@
             <li class="blog-post-item">
               <a href="#">
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                  <img src="./assets/images/certificate-1.jpg" alt="5G and AI: Transforming Telecommunication" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Itelcotech</p>
                     <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Dec 22, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
-                  <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
-                  </p>
+                  <h3 class="h3 blog-item-title">5G and AI: Transforming Telecommunication</h3>
                 </div>
 
               </a>
@@ -557,20 +313,17 @@
             <li class="blog-post-item">
               <a href="#">
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
+                  <img src="./assets/images/certificate-2.jpg" alt="AI Prompts for Gamified Learning Design" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Karl Kapp</p>
                     <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Dec 22, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-                  <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
-                  </p>
+                  <h3 class="h3 blog-item-title">AI Prompts for Gamified Learning Design</h3>
 
                 </div>
 
@@ -580,20 +333,18 @@
             <li class="blog-post-item">
               <a href="#">
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
+                  <img src="./assets/images/certificate-3.jpg" alt="Programming Foundations: Artificial Intelligence" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Kesha Williams</p>
                     <span class="dot"></span>
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Dec 22, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
-                  <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
-                  </p>
+                  <h3 class="h3 blog-item-title">Programming Foundations: Artificial Intelligence</h3>
+      
                 </div>
               </a>
             </li>
@@ -602,24 +353,20 @@
               <a href="#">
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                  <img src="./assets/images/certificate-4.jpg" alt="Design Thinking in the Age of AI" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Justin Ahrens</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Dec 22, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
+                  <h3 class="h3 blog-item-title">Design Thinking in the Age of AI</h3>
 
                 </div>
 
@@ -630,54 +377,25 @@
               <a href="#">
 
                 <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
+                  <img src="./assets/images/certificate-5.png" alt="Ignite Bootcamp-Venture Idea Development-Philippines" loading="lazy">
                 </figure>
 
                 <div class="blog-content">
 
                   <div class="blog-meta">
-                    <p class="blog-category">Design</p>
+                    <p class="blog-category">Wadhwani</p>
 
                     <span class="dot"></span>
 
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                    <time datetime="2022-02-23">Dec 10, 2025</time>
                   </div>
 
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
+                  <h3 class="h3 blog-item-title">Ignite Bootcamp-Venture Idea Development-Philippines</h3>
 
                 </div>
 
               </a>
             </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
 
               </a>
             </li>
@@ -688,12 +406,6 @@
 
       </article>
 
-
-
-
-      <!--
-        - #CONTACT
-      -->
 
       <article class="contact" data-page="contact" id="contact">
 
@@ -730,11 +442,55 @@
 
   </main>
 
+  <!-- Preloader -->
+  <div id="preloader" class="preloader" aria-hidden="true">
+    <div class="preloader-particles">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <img src="./assets/images/logo.svg" alt="Logo" class="preloader-logo">
+        <div class="preloader-glow"></div>
+      </div>
+      <p class="preloader-title">Welcome to my portfolio.</p>
+      <p class="preloader-subtitle">Loading experience...</p>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="footer-content">
+      <div class="footer-socials">
+        <a href="https://github.com/LanceOnes" class="footer-social-link" aria-label="GitHub">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="https://www.facebook.com/lance.ones1" class="footer-social-link" aria-label="Facebook">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a>
+        <a href="https://www.linkedin.com/in/lance-sibug-179261385/" class="footer-social-link" aria-label="LinkedIn">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a href="https://www.instagram.com/_lans.ones/" class="footer-social-link" aria-label="Instagram">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+      </div>
       <p>&copy; 2026 Lance Sibug. All Rights Reserved.</p>
     </div>
   </footer>
+
+  <div class="project-modal" id="project-modal" aria-hidden="true">
+    <div class="project-modal-content" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+      <button class="project-modal-close" aria-label="Close preview" data-project-modal-close>
+        <ion-icon name="close"></ion-icon>
+      </button>
+      <figure class="project-modal-figure">
+        <img src="" alt="" id="project-modal-img">
+      </figure>
+      <div class="project-modal-meta">
+        <h3 class="project-modal-title" id="project-modal-title"></h3>
+        <p class="project-modal-category" id="project-modal-category"></p>
+      </div>
+    </div>
+  </div>
 
   <!--
     - custom js link

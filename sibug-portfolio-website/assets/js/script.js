@@ -107,9 +107,10 @@ if (navbarEl) {
 
 // Map navbar link text to page names
 const pageMap = {
-  'home': 'about',      // Home shows the about page (which has hero section)
+  'home': 'home',
   'about': 'about',
   'projects': 'portfolio',
+  'certificates': 'blog',
   'contact': 'contact'
 };
 
@@ -136,7 +137,7 @@ document.addEventListener('click', function (e) {
   // Find the target article/section
   const targetArticle = document.querySelector(`[data-page="${pageName}"]`);
   const targetSection = document.querySelector(`#${target}`);
-  
+
   // Show the matching page
   if (pages && pages.length) {
     for (let j = 0; j < pages.length; j++) {
@@ -164,9 +165,19 @@ document.addEventListener('click', function (e) {
     const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 64;
     let scrollTarget = null;
     
-    if (targetSection) {
+    // Special handling for about vs home
+    if (target === 'about') {
+      // For "About", scroll to experiences section or the about article
+      const experiencesSection = document.querySelector('#experiences');
+      scrollTarget = experiencesSection || targetArticle;
+    } else if (target === 'home') {
+      // For "Home", scroll to the home hero section
+      scrollTarget = document.querySelector('#home-hero') || document.querySelector('#home') || targetArticle;
+    } else if (targetSection) {
+      // For other targets, use the section if it exists
       scrollTarget = targetSection;
     } else if (targetArticle) {
+      // Fallback to the article
       scrollTarget = targetArticle;
     }
     
@@ -226,7 +237,74 @@ window.addEventListener('popstate', function() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
   handleInitialPageLoad();
+  initScrollSpy();
 });
+
+// Scroll spy functionality to highlight active navbar item based on scroll position
+function initScrollSpy() {
+  const sections = [
+    { id: 'home', navLink: 'home' },
+    { id: 'experiences', navLink: 'about' },
+    { id: 'projects', navLink: 'projects' },
+    { id: 'certificates', navLink: 'certificates' },
+    { id: 'contact', navLink: 'contact' }
+  ];
+
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 64;
+
+  function updateActiveNavLink() {
+    let currentSection = '';
+    const scrollPosition = window.scrollY + navbarHeight + 100; // Offset for better detection
+
+    // Check each section to see if it's in view
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const section = document.querySelector(`#${sections[i].id}`);
+      if (section) {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          currentSection = sections[i].navLink;
+          break;
+        }
+      }
+    }
+
+    // If no section found, check if we're at the top (home section)
+    if (!currentSection && window.scrollY < 200) {
+      currentSection = 'home';
+    }
+
+    // Update active state on nav links
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const linkTarget = href.substring(1).toLowerCase();
+        if (linkTarget === currentSection) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      }
+    });
+  }
+
+  // Throttle scroll events for better performance
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateActiveNavLink();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Initial check
+  updateActiveNavLink();
+}
 
   // Make the hero "GitHub Profile" button open the user's GitHub profile.
   // Derives the profile owner from the existing `.github-repo-btn` href when possible.
@@ -255,5 +333,112 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       window.open(profileUrl, '_blank', 'noopener');
+    });
+  });
+
+// ---------- Preloader ----------
+document.addEventListener('DOMContentLoaded', function () {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+
+  document.body.classList.add('preloading');
+
+  const hidePreloader = () => {
+    preloader.classList.add('hide');
+    preloader.setAttribute('aria-hidden', 'true');
+    setTimeout(() => document.body.classList.remove('preloading'), 200);
+  };
+
+  // Ensure the preloader stays ~4s, but also waits for load when possible
+  const MIN_DURATION = 4000;
+  const startTime = performance.now();
+
+  const maybeHide = () => {
+    const elapsed = performance.now() - startTime;
+    const remaining = Math.max(0, MIN_DURATION - elapsed);
+    setTimeout(hidePreloader, remaining);
+  };
+
+  window.addEventListener('load', maybeHide);
+
+  // Absolute fallback: hide after 4.5s in case load never fires
+  setTimeout(hidePreloader, 4500);
+});
+
+// ---------- Contact form mailto send ----------
+document.addEventListener('DOMContentLoaded', function () {
+  const contactForm = document.querySelector('[data-form]');
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = contactForm.querySelector('input[name="fullname"]')?.value || 'Visitor';
+    const email = contactForm.querySelector('input[name="email"]')?.value || '';
+    const message = contactForm.querySelector('textarea[name="message"]')?.value || '';
+
+    const subject = `Portfolio Contact from ${name}`;
+    const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+    const mailtoLink = `mailto:lancesibug757@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    window.location.href = mailtoLink;
+    contactForm.reset();
+  });
+});
+
+// ---------- Project modal (lightbox) ----------
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById('project-modal');
+  if (!modal) return;
+
+  const modalImg = modal.querySelector('#project-modal-img');
+  const modalTitle = modal.querySelector('#project-modal-title');
+  const modalCategory = modal.querySelector('#project-modal-category');
+  const closeButtons = modal.querySelectorAll('[data-project-modal-close]');
+
+  const openModal = (src, title, category, altText) => {
+    if (modalImg) {
+      modalImg.src = src;
+      modalImg.alt = altText || title || 'Project preview';
+    }
+    if (modalTitle) modalTitle.textContent = title || '';
+    if (modalCategory) modalCategory.textContent = category || '';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('no-scroll');
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('no-scroll');
+  };
+
+  closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  const previewLinks = document.querySelectorAll('.project-item a, .blog-post-item a');
+  previewLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const img = link.querySelector('img');
+      const titleEl = link.querySelector('.project-title');
+      const blogTitleEl = link.querySelector('.blog-item-title');
+      const categoryEl = link.querySelector('.project-category, .blog-category, .blog-meta .blog-category');
+      const src = img ? img.src : '';
+      const title = (titleEl || blogTitleEl) ? (titleEl || blogTitleEl).textContent.trim() : '';
+      const category = categoryEl ? categoryEl.textContent.trim() : '';
+      const altText = img ? img.alt : '';
+      if (src) {
+        openModal(src, title, category, altText);
+      }
+    });
     });
   });
